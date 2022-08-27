@@ -63,19 +63,19 @@ developing your own process.
 - Add a new toy when the toy form is submitted
 
     - How I debugged:
+        - I tried to add a new toy using the frontend app and saw a response from the server with code 500 at the handleSubmit function.
+        - Checked routes.rb and found the route actions for **index**, **create** and **update** are already in place.
+        - I used rails console and tried to add a new toy, it worked well.
+        - Checked the backend server logs and found the error was: 
+            - **NameError (uninitialized constant ToysController::Toys):**
+            - **app/controllers/toys_controller.rb:10:in `create'**
+            - which is caused because in the create action the name of the Toy class is misspelled as "Toys".
+        - Corrected the misspelling and now the user is able to add new toys.
     
 
 - Update the number of likes for a toy
 
     - How I debugged:
-        I tried to add a new toy using the frontend app and saw a response from the server with code 500 at the handleSubmit function.
-        Checked routes.rb and found the route actions for **index**, **create** and **update** are already in place.
-        I used rails console and tried to add a new toy, it worked well.
-        Checked the backend server logs and found the error was: 
-            **NameError (uninitialized constant ToysController::Toys):**
-            **app/controllers/toys_controller.rb:10:in `create'**
-            which is caused because in the create action the name of the Toy class is misspelled as "Toys".
-        Corrected the misspelling and now the user is able to add new toys.
     
 
 - Donate a toy to Goodwill (and delete it from our database)
