@@ -63,14 +63,15 @@ developing your own process.
 - Add a new toy when the toy form is submitted
 
     - How I debugged:
-        - I tried to add a new toy using the frontend app and saw a response from the server with code 500 at the handleSubmit function.
+        - Tried to add a new toy using the frontend app and saw a response from the server with code 500 at the handleSubmit function.
         - Checked routes.rb and found the route actions for **index**, **create** and **update** are already in place.
-        - I used rails console and tried to add a new toy, it worked well.
+        - Used rails console and tried to add a new toy, it worked well.
         - Checked the backend server logs and found the error was: 
             - **NameError (uninitialized constant ToysController::Toys):**
             - **app/controllers/toys_controller.rb:10:in `create'**
-            - which is caused because in the create action the name of the Toy class is misspelled as "Toys".
-        - Corrected the misspelling and now the user is able to add new toys. **Task finished!**
+            - which was caused because in the create action the name of the Toy class was misspelled as "Toys".
+        - Eliminated the misspelling in the Toys controller.
+        - Tried again to add a new toy and everything worked fine.
     
 
 - Update the number of likes for a toy
@@ -87,4 +88,9 @@ developing your own process.
 - Donate a toy to Goodwill (and delete it from our database)
 
     - How I debugged:
-
+        - Tried to donate the toy and got this message in the console:
+            - **DELETE http://localhost:4000/toys/9 404 (Not Found)**
+        - The backend server log was displaying the message: **ActionController::RoutingError (No route matches [DELETE] "/toys/9"):**
+          which means there isn't a route for the destroy action.
+        - Modified routes.rb to add the destroy action.
+        - Tried again to donate the toy and it worked.
