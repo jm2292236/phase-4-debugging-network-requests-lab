@@ -70,12 +70,18 @@ developing your own process.
             - **NameError (uninitialized constant ToysController::Toys):**
             - **app/controllers/toys_controller.rb:10:in `create'**
             - which is caused because in the create action the name of the Toy class is misspelled as "Toys".
-        - Corrected the misspelling and now the user is able to add new toys.
+        - Corrected the misspelling and now the user is able to add new toys. **Task finished!**
     
 
 - Update the number of likes for a toy
 
     - How I debugged:
+        - Tried to add a like to a toy in the frontend app and got this error displaying on the console:
+            - **Uncaught (in promise) SyntaxError: Unexpected end of JSON input**
+        - Already know that this kind of error is caused because the backend server is not rendering json data back
+          but the frontend app is expecting it.
+        - Modified the controller's create action to render json.
+        - Tried again to add a like to toys and it worked as expected.
     
 
 - Donate a toy to Goodwill (and delete it from our database)
